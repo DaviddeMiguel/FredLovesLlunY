@@ -19,8 +19,6 @@ import android.app.Application;
 import com.karumi.dexter.Dexter;
 import com.meslize.fredloveslluny.internal.di.components.ApplicationComponent;
 import com.meslize.fredloveslluny.internal.di.components.DaggerApplicationComponent;
-import com.meslize.fredloveslluny.internal.di.mock.DaggerMockApplicationComponent;
-import com.meslize.fredloveslluny.internal.di.mock.MockApplicationModule;
 import com.meslize.fredloveslluny.internal.di.modules.ApplicationModule;
 
 public class AndroidApplication extends Application {
@@ -39,19 +37,12 @@ public class AndroidApplication extends Application {
 
     Dexter.initialize(this);
 
-    initializeInjector();
+    initializeDagger();
   }
 
-  private void initializeInjector() {
-    if (BuildConfig.MOCK) {
-      mApplicationComponent = DaggerMockApplicationComponent.builder()
-          .mockApplicationModule(new MockApplicationModule(this))
-          .build();
-    } else {
-      mApplicationComponent = DaggerApplicationComponent.builder()
-          .applicationModule(new ApplicationModule(this))
-          .build();
-    }
+  private void initializeDagger() {
+    mApplicationComponent =
+        DaggerApplicationComponent.builder().applicationModule(new ApplicationModule(this)).build();
   }
 
   public ApplicationComponent getApplicationComponent() {

@@ -1,4 +1,4 @@
-package com.meslize.fredloveslluny.internal.di.mock;
+package com.meslize.fredloveslluny.internal.di.modules;
 
 import android.content.Context;
 import com.meslize.fredloveslluny.AndroidApplication;
@@ -16,10 +16,10 @@ import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
 
-@Module public class MockApplicationModule {
+@Module public class ApplicationModule {
   private final AndroidApplication application;
 
-  public MockApplicationModule(AndroidApplication application) {
+  public ApplicationModule(AndroidApplication application) {
     this.application = application;
   }
 

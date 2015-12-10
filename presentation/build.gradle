@@ -30,6 +30,16 @@ android {
     }
   }
 
+  productFlavors {
+    mock{
+
+    }
+
+    real{
+
+    }
+  }
+
   lintOptions {
     disable 'InvalidPackage'
   }
