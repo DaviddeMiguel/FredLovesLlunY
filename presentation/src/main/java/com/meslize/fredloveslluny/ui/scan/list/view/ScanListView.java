@@ -6,5 +6,5 @@ import java.util.List;
 public interface ScanListView {
   void showItems(List<LlunyModel> items);
 
-  void showItemAddedMessage();
+  void startEditLlunyScreen();
 }

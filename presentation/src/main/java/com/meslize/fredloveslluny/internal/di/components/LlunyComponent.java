@@ -3,6 +3,7 @@ package com.meslize.fredloveslluny.internal.di.components;
 import com.meslize.fredloveslluny.internal.di.PerActivity;
 import com.meslize.fredloveslluny.internal.di.modules.ActivityModule;
 import com.meslize.fredloveslluny.internal.di.modules.LlunyModule;
+import com.meslize.fredloveslluny.ui.lluny.edit.EditLlunyActivity;
 import com.meslize.fredloveslluny.ui.lluny.list.view.LlunyListActivity;
 import com.meslize.fredloveslluny.ui.scan.list.view.ScanListActivity;
 import dagger.Component;
@@ -13,4 +14,6 @@ import dagger.Component;
   void inject(LlunyListActivity activity);
 
   void inject(ScanListActivity activity);
+
+  void inject(EditLlunyActivity activity);
 }

@@ -8,7 +8,7 @@ import com.meslize.fredloveslluny.internal.di.components.LlunyComponent;
 import com.meslize.fredloveslluny.internal.di.modules.ActivityModule;
 import com.meslize.fredloveslluny.ui.scan.list.view.ScanListActivity;
 
-public class DetectListInjector {
+public class ScanListInjector {
   public void inject(ScanListActivity activity) {
     ApplicationComponent applicationComponent =
         AndroidApplication.getInstance().getApplicationComponent();

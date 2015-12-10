@@ -20,6 +20,7 @@ import javax.inject.Inject;
   ScanListView mView;
 
   LlunyModelMapper mLlunyModelMapper = new LlunyModelMapper();
+  List<Lluny> mItems;
 
   @Inject
   public ScanListPresenter(ScanBeaconsUseCase scanBeaconsUseCase, AddLlunyUseCase addLlunyUseCase) {
@@ -50,8 +51,7 @@ import javax.inject.Inject;
       return;
     }
 
-    mView.showItemAddedMessage();
-    //TODO(david) The screen should be closed at this point
+    mView.startEditLlunyScreen();
   }
 
   @Override public void onDetectBeaconsSuccess(List<Lluny> data) {
@@ -59,6 +59,11 @@ import javax.inject.Inject;
       return;
     }
 
+    mItems = data;
     mView.showItems(mLlunyModelMapper.map(data));
+  }
+
+  public void onClickItem(int position) {
+    mAddLlunyUseCase.executeAsync(mItems.get(position), this);
   }
 }

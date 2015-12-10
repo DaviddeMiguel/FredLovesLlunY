@@ -2,7 +2,6 @@ package com.meslize.fredloveslluny.ui.scan.list.view;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -20,8 +19,9 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 import com.meslize.fredloveslluny.R;
-import com.meslize.fredloveslluny.internal.di.injectors.DetectListInjector;
+import com.meslize.fredloveslluny.internal.di.injectors.ScanListInjector;
 import com.meslize.fredloveslluny.model.LlunyModel;
+import com.meslize.fredloveslluny.ui.lluny.edit.EditLlunyActivity;
 import com.meslize.fredloveslluny.ui.scan.list.presenter.ScanListPresenter;
 import com.meslize.fredloveslluny.util.BaseActivity;
 import com.meslize.fredloveslluny.util.BaseRecyclerViewAdapter;
@@ -33,14 +33,13 @@ public class ScanListActivity extends BaseActivity
 
   public static final int REQUEST_CODE = 1000;
 
-  DetectListInjector mInjector = new DetectListInjector();
+  ScanListInjector mInjector = new ScanListInjector();
+  EditLlunyActivity.Navigator mEditLlunyNavigator = new EditLlunyActivity.Navigator();
 
   @Inject ScanListPresenter mPresenter;
 
   @Bind(R.id.toolbar) Toolbar mToolbar;
   @Bind(R.id.recycler_view) RecyclerView mRecyclerView;
-
-  ProgressDialog mProgressDialog;
 
   ScanListAdapter mAdapter = new ScanListAdapter();
 
@@ -82,8 +81,8 @@ public class ScanListActivity extends BaseActivity
     mRecyclerView.setAdapter(mAdapter);
   }
 
-  @Override public void showItemAddedMessage() {
-    Snackbar.make(mRecyclerView, "Item added", Snackbar.LENGTH_LONG).setAction("Undo", null).show();
+  @Override public void startEditLlunyScreen() {
+    mEditLlunyNavigator.start(this);
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {
@@ -104,7 +103,7 @@ public class ScanListActivity extends BaseActivity
   }
 
   @Override public void onClickItem(int position, View v) {
-    Snackbar.make(mRecyclerView, "Item clicked: " + position, Snackbar.LENGTH_LONG).show();
+    mPresenter.onClickItem(position);
   }
 
   public static class Navigator {

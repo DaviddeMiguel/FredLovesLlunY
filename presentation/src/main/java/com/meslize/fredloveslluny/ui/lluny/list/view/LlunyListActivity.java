@@ -32,7 +32,6 @@ public class LlunyListActivity extends BaseActivity
     implements LlunyListView, BaseRecyclerViewAdapter.OnItemClickListener {
 
   LlunyListInjector mInjector = new LlunyListInjector();
-
   ScanListActivity.Navigator mDetectListNavigator = new ScanListActivity.Navigator();
 
   @Inject LlunyListPresenter mPresenter;
