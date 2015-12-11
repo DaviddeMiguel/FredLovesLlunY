@@ -110,12 +110,9 @@ public class LlunyListActivity extends BaseActivity
   }
 
   @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-
-    if (RESULT_OK == resultCode){
+    if (RESULT_OK == resultCode && REQUEST_CODE_ADD_LLUNY == requestCode){
       Log.d("", "");
-    }else if (RESULT_CANCELED == resultCode){
-      Log.d("", "");
+      
     }
   }
 }

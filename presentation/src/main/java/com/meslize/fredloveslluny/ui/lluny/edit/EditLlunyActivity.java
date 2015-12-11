@@ -53,5 +53,10 @@ public class EditLlunyActivity extends BaseActivity implements EditLlunyView {
       activity.startActivity(intent);
       activity.finish();
     }
+
+    public void startForResult(Activity activity) {
+      Intent intent = new Intent(activity, EditLlunyActivity.class);
+      activity.startActivityForResult(intent, REQUEST_CODE_ADD_LLUNY);
+    }
   }
 }

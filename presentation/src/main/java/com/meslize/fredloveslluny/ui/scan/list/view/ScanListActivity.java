@@ -31,8 +31,6 @@ import javax.inject.Inject;
 public class ScanListActivity extends BaseActivity
     implements ScanListView, BaseRecyclerViewAdapter.OnItemClickListener {
 
-  public static final int REQUEST_CODE = 1000;
-
   ScanListInjector mInjector = new ScanListInjector();
   EditLlunyActivity.Navigator mEditLlunyNavigator = new EditLlunyActivity.Navigator();
 
@@ -82,7 +80,7 @@ public class ScanListActivity extends BaseActivity
   }
 
   @Override public void startEditLlunyScreen() {
-    mEditLlunyNavigator.start(this);
+    mEditLlunyNavigator.startForResult(this);
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {
@@ -109,7 +107,7 @@ public class ScanListActivity extends BaseActivity
   public static class Navigator {
     public void startForResult(Activity activity) {
       Intent intent = new Intent(activity, ScanListActivity.class);
-      activity.startActivityForResult(intent, REQUEST_CODE);
+      activity.startActivityForResult(intent, REQUEST_CODE_ADD_LLUNY);
     }
   }
 }
