@@ -39,6 +39,8 @@ import javax.inject.Inject;
   }
 
   public void onClickSave() {
-    mAddLlunyUseCase.executeAsync(mLLuny, this);
+    //TODO(david) We should save the lluny selected in db
+    //mAddLlunyUseCase.executeAsync(mLLuny, this);
+    mView.setForwardedResultResult();
   }
 }

@@ -1,6 +1,6 @@
 package com.meslize.fredloveslluny.ui.lluny.edit;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -20,7 +20,7 @@ public class EditLlunyActivity extends BaseActivity implements EditLlunyView {
   @Inject EditLlunyPresenter mPresenter;
 
   @Bind(R.id.toolbar) Toolbar mToolbar;
-  @Bind(R.id.fab) FloatingActionButton mFloatingActionButton;
+  @Bind(R.id.save) FloatingActionButton mFloatingActionButton;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -47,10 +47,11 @@ public class EditLlunyActivity extends BaseActivity implements EditLlunyView {
   }
 
   public static class Navigator {
-    public void start(Context context) {
-      Intent intent = new Intent(context, EditLlunyActivity.class);
+    public void start(Activity activity) {
+      Intent intent = new Intent(activity, EditLlunyActivity.class);
       intent.setFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
-      context.startActivity(intent);
+      activity.startActivity(intent);
+      activity.finish();
     }
   }
 }
